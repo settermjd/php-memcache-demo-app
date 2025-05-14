@@ -1,0 +1,23 @@
+
+services:
+  webserver:
+    build:
+      context: ./
+      dockerfile: docker/webserver/Dockerfile
+      args:
+        PHP_VERSION: 8.4
+    restart: on-failure:5
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/api/ping" ]
+      interval: 60s
+      timeout: 3s
+      retries: 3
+
+  cache:
+    image: memcached:1.6.38-bookworm
+    ports:
+      - "11211:11211"
