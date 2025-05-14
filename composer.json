@@ -1,6 +1,7 @@
 {
     "name": "settermjd/php-memcache-demo-app",
     "description": "This is a small PHP application that performs basic interaction with one or more Memcached servers. It's backed by a minimalist Docker Compose configuration that sets up a two-container configuration.",
+    "license": "GPL-3.0-or-later",
     "require": {
         "php": "^8.4",
         "ext-memcached": "*",
